@@ -34,4 +34,9 @@ if [ "$TILES_C" == "0" ]; then
     java -jar ${GAZETTEER_JAR} tile-buildings --out-dir ${OSM_TILES} --data-dir ${GAZETTEER_DATA_DIR}
 fi
 
-find ${OSM_TILES} -iname '*.osm' | xargs -n 2 $DIR/parallel_commands.sh "$TILE_SCRIPT $1" "$TILE_SCRIPT $2"
+python ${DIR}/convert_parallel.py ${OSM_TILES}
+python ${DIR}/tileset_of_tilesets.py ${OBJ_TILES}
+
+find $OBJ_TILES -type f -iname '*.obj' -delete
+find $OBJ_TILES -type f -iname '*.glb' -delete
+find $OBJ_TILES -type f -iname '*.properties' -delete

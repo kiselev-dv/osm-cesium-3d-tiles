@@ -10,6 +10,7 @@ RUN \
     wget \
     git \
     unzip \
+    parallel \
     osmctools && \
   rm -rf /var/lib/apt/lists/*
 
