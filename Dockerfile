@@ -10,6 +10,7 @@ RUN \
     wget \
     git \
     unzip \
+    tar \
     parallel \
     osmctools && \
   rm -rf /var/lib/apt/lists/*
@@ -33,9 +34,11 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - ;\
 WORKDIR /opt
 
 # Install OSM2World
-RUN wget http://osm2world.org/download/files/latest/OSM2World-latest-bin.zip && \
-    unzip OSM2World-latest-bin.zip -d osm2world && \
-    rm OSM2World-latest-bin.zip
+RUN mkdir /opt/OSM2World && \
+    wget https://github.com/kiselev-dv/OSM2World/releases/download/tiled-out-0.1/build.tgz && \
+    tar -xzf build.tgz -C /opt/OSM2World && \
+    mv /opt/OSM2World/build/* /opt/OSM2World/ && \
+    rm -rf build.tgz /opt/OSM2World/build
 
 RUN wget https://github.com/AnalyticalGraphicsInc/3d-tiles-tools/archive/master.zip && \
     unzip master.zip && \

@@ -38,5 +38,6 @@ python ${DIR}/convert_parallel.py ${OSM_TILES}
 python ${DIR}/tileset_of_tilesets.py ${OBJ_TILES}
 
 find $OBJ_TILES -type f -iname '*.obj' -delete
+find $OBJ_TILES -type f -iname '*.mtl' -delete
 find $OBJ_TILES -type f -iname '*.glb' -delete
 find $OBJ_TILES -type f -iname '*.properties' -delete
