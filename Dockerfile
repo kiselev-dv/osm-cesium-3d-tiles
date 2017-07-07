@@ -11,6 +11,9 @@ RUN \
     git \
     unzip \
     tar \
+    ant \
+    vim \
+    nano \
     parallel \
     osmctools && \
   rm -rf /var/lib/apt/lists/*
@@ -33,13 +36,6 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - ;\
 
 WORKDIR /opt
 
-# Install OSM2World
-RUN mkdir /opt/OSM2World && \
-    wget https://github.com/kiselev-dv/OSM2World/releases/download/tiled-out-0.1/build.tgz && \
-    tar -xzf build.tgz -C /opt/OSM2World && \
-    mv /opt/OSM2World/build/* /opt/OSM2World/ && \
-    rm -rf build.tgz /opt/OSM2World/build
-
 RUN wget https://github.com/AnalyticalGraphicsInc/3d-tiles-tools/archive/master.zip && \
     unzip master.zip && \
     mv 3d-tiles-tools-master 3d-tiles-tools && \
@@ -56,7 +52,26 @@ RUN wget https://github.com/AnalyticalGraphicsInc/obj2gltf/archive/master.zip &&
     rm /opt/master.zip && \
     cd /opt
 
+# Install OSM2World
+RUN mkdir /opt/OSM2World && mkdir /opt/OSM2World-release && \
+    wget https://github.com/kiselev-dv/OSM2World/archive/tiled_out.zip && \
+    unzip tiled_out.zip && \
+    mv OSM2World-tiled_out/* OSM2World/ && \
+    rm tiled_out.zip && \
+    cd /opt/OSM2World && \
+    ant release && \
+    unzip /opt/OSM2World/build/OSM2World-noversion-bin.zip -d /opt/OSM2World-release && \
+    cd /opt && \
+    rm -rf /opt/OSM2World/ && \
+    rm -rf OSM2World-tiled_out && \
+    mv /opt/OSM2World-release /opt/OSM2World
+
+RUN mkdir /opt/gazetteer && \
+    wget https://github.com/kiselev-dv/gazetteer/releases/download/Gazetteer-1.9rc4/gazetteer.jar -O /opt/gazetteer/gazetteer.jar
+
 COPY scripts /opt/scripts
+
+WORKDIR /opt/OSM2World
 
 CMD [/bin/bash]
 
