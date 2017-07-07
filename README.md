@@ -7,9 +7,9 @@
     It will change 1.1. step if you use pbf dump. 
     If you don't have enough RAM edit script to add `--disk-index` after `tile-buildings`.
 
-    1.1. `java -jar /opt/gazetteer/gazetteer.jar --data-dir /opt/data split /opt/data/map.osm.bz2`
+    1.1 `java -jar /opt/gazetteer/gazetteer.jar --data-dir /opt/data split /opt/data/map.osm.bz2`
 
-    1.2. `java -jar /opt/gazetteer/gazetteer.jar --data-dir /opt/data tile-buildings --out-dir /opt/osm-tiles --level 12`
+    1.2 `java -jar /opt/gazetteer/gazetteer.jar --data-dir /opt/data tile-buildings --out-dir /opt/osm-tiles --level 12`
 
 2. Convert each tile into smaller obj tiles, generate cesium `tileset.json` metafile using https://github.com/kiselev-dv/OSM2World
 
@@ -17,8 +17,10 @@
 
     Original script do that in several threads, to speadup the process. If you want to run OSM2World manually:
 
-    2.1. `cd /opt/OSM2World` it's necessary for `osm2world.sh` to link libs on the right paths.
-    2.2. `./osm2world.sh -i /opt/osm-tiles/{zoom}/{x}/{y}.osm -o /opt/obj-tiles/dummy.obj`
+    2.1 `cd /opt/OSM2World` it's necessary for `osm2world.sh` to link libs on the right paths.
+
+    2.2 `./osm2world.sh -i /opt/osm-tiles/{zoom}/{x}/{y}.osm -o /opt/obj-tiles/dummy.obj`
+
         It will create /opt/obj-tiles/14/* tiles, /opt/obj-tiles/14/tileset.json and /opt/obj-tiles/14/dummy.mtl
         Original script, will create different mtl and tileset.json files for each osm tile.
 
