@@ -21,8 +21,8 @@
 
     2.2 `./osm2world.sh -i /opt/osm-tiles/{zoom}/{x}/{y}.osm -o /opt/obj-tiles/dummy.obj`
 
-        It will create /opt/obj-tiles/14/* tiles, /opt/obj-tiles/14/tileset.json and /opt/obj-tiles/14/dummy.mtl
-        Original script, will create different mtl and tileset.json files for each osm tile.
+    It will create /opt/obj-tiles/14/* tiles, /opt/obj-tiles/14/tileset.json and /opt/obj-tiles/14/dummy.mtl
+    Original script, will create different mtl and tileset.json files for each osm tile.
 
 3. Convert obj into binary gltf using https://github.com/AnalyticalGraphicsInc/obj2gltf
 4. Convert binary gltfs into b3dms using https://github.com/AnalyticalGraphicsInc/3d-tiles-tools
