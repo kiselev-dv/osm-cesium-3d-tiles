@@ -4,7 +4,7 @@
 
 1. Split and filter OSM into tiles using https://github.com/kiselev-dv/gazetteer
 
-    It will change 1.1. step if you use pbf dump. 
+    It will change `1.1` step if you use pbf dump. 
     If you don't have enough RAM edit script to add `--disk-index` after `tile-buildings`.
 
     1.1 `java -jar /opt/gazetteer/gazetteer.jar --data-dir /opt/data split /opt/data/map.osm.bz2`
@@ -21,8 +21,9 @@
 
     2.2 `./osm2world.sh -i /opt/osm-tiles/{zoom}/{x}/{y}.osm -o /opt/obj-tiles/dummy.obj`
 
-    It will create /opt/obj-tiles/14/* tiles, /opt/obj-tiles/14/tileset.json and /opt/obj-tiles/14/dummy.mtl
-    Original script, will create different mtl and tileset.json files for each osm tile.
+    Point `2.2` will create `/opt/obj-tiles/14/*` tiles, `/opt/obj-tiles/14/tileset.json` and `/opt/obj-tiles/14/dummy.mtl`
+
+    Original script, will create different `*.mtl` and `tileset.json` files for each osm tile.
 
 3. Convert obj into binary gltf using https://github.com/AnalyticalGraphicsInc/obj2gltf
 4. Convert binary gltfs into b3dms using https://github.com/AnalyticalGraphicsInc/3d-tiles-tools
